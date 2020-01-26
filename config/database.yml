@@ -88,6 +88,9 @@ test:
 #
 production:
   <<: *default
-  database: ruben-app-sp_production
-  username: ruben-app-sp
+  database: d2b7efo2mtokvi
+  username: oqnzovjbjrfvpe
+  host: ec2-54-197-238-238.compute-1.amazonaws.com
+  port: 5432
+  schema_search_path: rubytify
   password: <%= ENV['RUBEN-APP-SP_DATABASE_PASSWORD'] %>
