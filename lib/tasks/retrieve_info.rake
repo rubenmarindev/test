@@ -14,25 +14,25 @@ task :retrieve => :environment do
                         artist.save
                         spotify_artist.genres.each do |s_genre|
                             genre = Genre.new_from_artist(artist.id, s_genre)
-                            #puts "\t\tGenre: " + genre.name
                             genre.save
                         end
                     end
                     list_aux = spotify_artist.albums.uniq { |alb| [alb.name.downcase] }
                     list_aux.map do |s_album|
-                        Album.transaction do
+                        #Album.transaction do
                             album = Album.new_from_spotify_album(s_album, artist.id)
-                            #puts "\t\tAlbum: " + s_album.name
                             my_albums = Album.where(spotify_id:album.spotify_id)
                             if (my_albums.length <= 0) then
                                 album.save
-                                s_album.tracks.map do |s_track|
-                                    song = Song.new_from_spotify_track(s_track, album.id)
-                                    #puts "\t\t\tSong: " + s_track.name
+                            end
+                            s_album.tracks.map do |s_track|
+                                song = Song.new_from_spotify_track(s_track, album.id)
+                                my_songs = Song.where(spotify_id:song.spotify_id)
+                                if (my_songs.length <= 0) then
                                     song.save
                                 end
                             end
-                        end
+                        #end
                     end
                 #end
             end
