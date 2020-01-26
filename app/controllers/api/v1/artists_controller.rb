@@ -9,7 +9,7 @@ class Api::V1::ArtistsController < ApplicationController
 
   def index
     my_artists = Array.new
-    s_artists = Artist.all
+    s_artists = Artist.all.order("popularity desc")
     s_artists.map do |artist|
       artist.genres = Genre.where(artist_id:artist.id)
       my_artists.push(artist)
