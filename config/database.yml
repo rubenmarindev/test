@@ -82,15 +82,18 @@ test:
 #   DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
 #
 # You can use this database configuration with:
-#   
+#
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
   <<: *default
-  database: d2b7efo2mtokvi
-  username: oqnzovjbjrfvpe
-  host: ec2-54-197-238-238.compute-1.amazonaws.com
+  #database: d2b7efo2mtokvi
+  database:d85r6p95jfh0u2
+  #username: oqnzovjbjrfvpe
+  username: yobpeoqedudqoi
+  #host: ec2-54-197-238-238.compute-1.amazonaws.com
+  host: ec2-18-214-140-149.compute-1.amazonaws.com
   port: 5432
   schema_search_path: rubytify
   password: <%= ENV['RUBEN-APP-SP_DATABASE_PASSWORD'] %>
